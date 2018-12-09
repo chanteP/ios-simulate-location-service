@@ -1,0 +1,78 @@
+html * {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+#app{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 30%;
+    height: 30vh;
+    background: rgba(0,0,0,.2);
+}
+#app:before,
+#app:after{
+    content: '';
+    position: absolute;
+    display: block;
+    background: rgba(255,255,255.3);
+    pointer-events: none;
+}
+#app:before{
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+}
+#app:after{
+    height: 100%;
+    width: 1px;
+    left: 50%;
+    top: 0;
+}
+#random{
+    position: fixed;
+    background: #333;
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+    top: 5px;
+    right: 5px;
+    box-shadow: rgba(0,0,0,.4) 0 0 4px;
+}
+#currentPos{
+    position: fixed;
+    font-size: 12px;
+    top: 5px;
+    left: 5px;
+}
+@media (min-width: 500px){
+    #app{
+        left: initial;
+        right: 0;
+        width: 30vh;
+    }
+}
+#control{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -15px 0 0 -15px;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background: #fff;
+    z-index: 1;
+    pointer-events: none;
+}
