@@ -30,7 +30,7 @@
         setTimeout(interval, 1000);
         if(controlLock || !enableRandom){return;}
         deg = `${(random() - 0.5).toFixed(1)},${(random() - 0.5).toFixed(1)}`;
-        speed = 4;
+        speed = 7;
     })();
 
     randomNode.addEventListener('click', (e) => {
@@ -42,7 +42,7 @@
         let d = ({38: '0,1',39: '1,0',40: '0,-1', 37: '-1,0'})[e.keyCode];
         if(d !== undefined){
             deg = d;
-            speed = 6;
+            speed = 10;
         }
     });
     window.addEventListener('keyup', e => {
@@ -55,13 +55,16 @@
     });
     wrap.addEventListener('touchmove', e => {
         let {pageX, pageY} = e.touches[0];
-        let {top, left} = wrap.getBoundingClientRect();
-        let offsetX = (pageX - left) - wrap.clientWidth * .5;
-        let offsetY = wrap.clientHeight * .5 - (pageY - top);
-        deg = `${(offsetX / wrap.clientWidth * 2).toFixed(1)},${(offsetY / wrap.clientHeight * 2).toFixed(1)}`;
-        speed = floor(sqrt(offsetX * offsetX + offsetY * offsetY)) / 10;
+        let top = wrap.offsetTop;
+        let left = wrap.offsetLeft;
+        let width = wrap.clientWidth;
+        let height = wrap.clientHeight;
+        let offsetX = .5 * width - pageX + left;
+        let offsetY = .5 * height - pageY + top;
+        deg = `${(-offsetX / width * 2).toFixed(1)},${(offsetY / height * 2).toFixed(1)}`;
+        speed = floor(sqrt(offsetX * offsetX + offsetY * offsetY)) / 3;
 
-        control.style.transform = `translate(${offsetX}px,${-offsetY}px)`;
+        control.style.transform = `translate(${-offsetX}px,${-offsetY}px)`;
     });
     wrap.addEventListener('touchend', e => {
         controlLock = false;

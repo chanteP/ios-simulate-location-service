@@ -18,15 +18,23 @@ html * {
     right: 0;
     margin: auto;
     height: 30%;
-    height: 30vh;
+    height: 100vw;
     background: rgba(0,0,0,.2);
+}
+@media (min-width: 500px){
+    #app{
+        left: initial;
+        right: 0;
+        height: 30vh;
+        width: 30vh;
+    }
 }
 #app:before,
 #app:after{
     content: '';
     position: absolute;
     display: block;
-    background: rgba(255,255,255.3);
+    background: #fff;
     pointer-events: none;
 }
 #app:before{
@@ -56,13 +64,6 @@ html * {
     font-size: 12px;
     top: 5px;
     left: 5px;
-}
-@media (min-width: 500px){
-    #app{
-        left: initial;
-        right: 0;
-        width: 30vh;
-    }
 }
 #control{
     position: absolute;
